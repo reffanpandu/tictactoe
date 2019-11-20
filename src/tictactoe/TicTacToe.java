@@ -352,6 +352,7 @@ public class TicTacToe extends javax.swing.JFrame {
 
         jTextField2.setEnabled(true);
         jTextField2.setText("");
+        jButton10.setEnabled(true);
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private static void acak() {
