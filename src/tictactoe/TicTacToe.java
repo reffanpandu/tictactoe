@@ -55,7 +55,9 @@ public class TicTacToe extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jButton11 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -162,16 +164,25 @@ public class TicTacToe extends javax.swing.JFrame {
                 jButton10ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 50, 120, -1));
+        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 140, -1));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 170, 160));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, 160, -1));
 
-        jTextField1.setText("jTextField1");
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 20, 130, -1));
+        jLabel3.setText("IP Address : ");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 30, -1, -1));
+
+        jButton11.setText("Reset IP");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, 180, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -221,6 +232,8 @@ public class TicTacToe extends javax.swing.JFrame {
             setDisabled();
         }
         acak();
+        jTextField2.setEnabled(false);
+        jButton11.setEnabled(false);
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -334,6 +347,12 @@ public class TicTacToe extends javax.swing.JFrame {
         kirim("9");
         endGame();
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+
+        jTextField2.setEnabled(true);
+        jTextField2.setText("");
+    }//GEN-LAST:event_jButton11ActionPerformed
 
     private static void acak() {
         jButton10.setEnabled(false);
@@ -489,12 +508,15 @@ public class TicTacToe extends javax.swing.JFrame {
                 || !jButton4.isEnabled() || !jButton5.isEnabled() || !jButton6.isEnabled()
                 || !jButton7.isEnabled() || !jButton8.isEnabled() || !jButton9.isEnabled()) {
             win();
+            jButton11.setEnabled(true);
         }
+        
     }
     
     private void kirim(String index) {
         try {
-            InetAddress ia = InetAddress.getByName("192.168.1.46");
+            String ip = jTextField2.getText();
+            InetAddress ia = InetAddress.getByName(ip);
             int Port = 2134;
             String s = String.valueOf(index);
             byte[] b = s.getBytes();
@@ -687,6 +709,7 @@ public class TicTacToe extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JButton jButton1;
     private static javax.swing.JButton jButton10;
+    private static javax.swing.JButton jButton11;
     private static javax.swing.JButton jButton2;
     private static javax.swing.JButton jButton3;
     private static javax.swing.JButton jButton4;
@@ -697,6 +720,7 @@ public class TicTacToe extends javax.swing.JFrame {
     private static javax.swing.JButton jButton9;
     private static javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
